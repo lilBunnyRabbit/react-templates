@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Button } from 'grommet';
 
 import { configActions } from '../../redux/reducers/configSlice';
 import { Reducers } from '../../redux/store';
@@ -23,17 +24,5 @@ export function ThemeButton(props: ThemeButtonProps) {
     borderColor: props.color,
   };
 
-  return (
-    <button
-      children={`Set to ${oppositeTheme}`}
-      onClick={handleButtonClick}
-      style={{
-        outline: 'none',
-        backgroundColor: 'inherit',
-        padding: '3px 10px 3px 10px',
-        fontWeight: 700,
-        ...colorStyle,
-      }}
-    />
-  );
+  return <Button primary label={`Set to ${oppositeTheme}`} onClick={handleButtonClick} />;
 }

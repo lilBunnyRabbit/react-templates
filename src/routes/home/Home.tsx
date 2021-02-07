@@ -4,38 +4,18 @@ import { RouteProps } from 'react-router';
 
 import { Reducers } from '../../redux/store';
 import { ThemeButton } from '../../components/theme-button/ThemeButton';
+import { Box, Heading, Paragraph } from 'grommet';
 
 export function Home(props: RouteProps) {
   const config = useSelector((state: Reducers) => state.config);
 
-  const style = config.theme === 'dark' ? { color: '#ffffff', backgroundColor: '#000000' } : {};
-
   return (
-    <div
-      style={{
-        ...style,
-        width: '100vw',
-        height: '100vh',
-        position: 'relative',
-      }}
-    >
-      <div
-        style={{
-          position: 'absolute',
-          display: 'flex',
-          flexDirection: 'column',
-          width: '100%',
-          height: '100%',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <h1>Home</h1>
-        <h4>
-          current theme is <i>{config.theme}</i>
-        </h4>
-        <ThemeButton color={config.theme === 'dark' ? 'white' : 'black'} />
-      </div>
-    </div>
+    <Box direction="column" justify="center" fill align="center">
+      <Heading margin="none" children="Home" />
+      <Paragraph>
+        current theme is <b>{config.theme}</b>
+      </Paragraph>
+      <ThemeButton color={config.theme === 'dark' ? 'white' : 'black'} />
+    </Box>
   );
 }
