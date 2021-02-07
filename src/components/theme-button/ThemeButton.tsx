@@ -1,14 +1,17 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Button } from '@material-ui/core';
 
 import { configActions } from '../../redux/reducers/configSlice';
 import { Reducers } from '../../redux/store';
+import { useThemeButtonStyles } from './ThemeButtonStyles';
 
 interface ThemeButtonProps {
-  color: string;
+  color: 'primary' | 'secondary';
 }
 
 export function ThemeButton(props: ThemeButtonProps) {
+  const classes = useThemeButtonStyles();
   const config = useSelector((state: Reducers) => state.config);
   const dispatch = useDispatch();
 
@@ -24,16 +27,12 @@ export function ThemeButton(props: ThemeButtonProps) {
   };
 
   return (
-    <button
-      children={`Set to ${oppositeTheme}`}
+    <Button
+      className={classes.root}
+      variant="outlined"
+      color={props.color}
       onClick={handleButtonClick}
-      style={{
-        outline: 'none',
-        backgroundColor: 'inherit',
-        padding: '3px 10px 3px 10px',
-        fontWeight: 700,
-        ...colorStyle,
-      }}
+      children={`Set to ${oppositeTheme}`}
     />
   );
 }

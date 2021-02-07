@@ -4,38 +4,27 @@ import { RouteProps } from 'react-router';
 
 import { Reducers } from '../../redux/store';
 import { ThemeButton } from '../../components/theme-button/ThemeButton';
+import { Chip, Typography } from '@material-ui/core';
+import { useHomeStyles } from './HomeStyles';
 
 export function Home(props: RouteProps) {
+  const classes = useHomeStyles();
   const config = useSelector((state: Reducers) => state.config);
 
-  const style = config.theme === 'dark' ? { color: '#ffffff', backgroundColor: '#000000' } : {};
-
   return (
-    <div
-      style={{
-        ...style,
-        width: '100vw',
-        height: '100vh',
-        position: 'relative',
-      }}
-    >
-      <div
-        style={{
-          position: 'absolute',
-          display: 'flex',
-          flexDirection: 'column',
-          width: '100%',
-          height: '100%',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <h1>Home</h1>
-        <h4>
-          current theme is <i>{config.theme}</i>
-        </h4>
-        <ThemeButton color={config.theme === 'dark' ? 'white' : 'black'} />
-      </div>
+    <div className={classes.root}>
+      <Typography variant="h2" component="h2" gutterBottom children="Home" />
+      <Typography variant="body1" gutterBottom>
+        current theme is
+        <Chip
+          className={classes.themeChip}
+          label={config.theme}
+          color={config.theme === 'dark' ? 'primary' : 'secondary'}
+          variant="outlined"
+          size="small"
+        />
+      </Typography>
+      <ThemeButton color={config.theme === 'dark' ? 'primary' : 'secondary'} />
     </div>
   );
 }
