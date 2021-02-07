@@ -1,3 +1,5 @@
+# React Templates
+
 Simple template for React that includes:
 - Typescript
 - Routing
