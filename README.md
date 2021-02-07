@@ -3,6 +3,8 @@ Simple template for React that includes:
 - Routing
 - Redux
 
+Example is a simple page with a button that changes the theme.
+
 # UI Frameworks
 - [Chakra UI](https://chakra-ui.com/) - `chakra-ui` branch
 - [Material UI](https://material-ui.com/) - `material-ui` branch
